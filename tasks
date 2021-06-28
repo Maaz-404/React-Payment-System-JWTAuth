@@ -1,0 +1,3 @@
+Conclusion: 
+    > From current investigation, i have reached a Conclusion that fetch requests on the same host are having a problem while remote requests work properly
+    > If all database content comes from backend then i have to add transactions in a controller along with userBoard controller on backend to pass the data to frontend UI..
