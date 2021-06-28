@@ -47,7 +47,7 @@ const BoardUser = () => {
                 <div class="card-body">
                     <h5 class="card-title">Channel ID </h5>
                     <p class="card-text">Channel Name.</p>
-                    <a href="#" class="btn btn-link">Share / Copy</a>
+                    <button class="btn btn-link">Share / Copy</button>
                 </div>
                 </div>
             </div>
@@ -56,7 +56,7 @@ const BoardUser = () => {
                 <div class="card-body">
                     <h5 class="card-title">Current Balance  </h5>
                     <p class="card-text">Total Received</p>
-                    <a href="#" class="btn btn-success">Withdraw</a>
+                    <button class="btn btn-success">Withdraw</button>
                 </div>
                 </div>
             </div>
