@@ -41,7 +41,6 @@ const BoardUser = () => {
         <h3>{content}</h3>
       </header>
      
-      </div>
         <div class="row">
             <div class="col-sm-6">
                 <div class="card">
