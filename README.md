@@ -1,4 +1,4 @@
-## React Hooks: JWT Authentication 
+## React Hooks: Payment System with JWT Auth 
 
 For more detail, please visit:
 
