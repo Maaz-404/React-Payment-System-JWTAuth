@@ -1,4 +1,4 @@
-## React Hooks: JWT Authentication (without Redux) example
+## React Hooks: JWT Authentication 
 
 For more detail, please visit:
 
