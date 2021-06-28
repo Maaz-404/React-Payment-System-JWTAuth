@@ -33,13 +33,43 @@ const BoardAdmin = () => {
         Total Received
         Commission/Earned
       </div>
-      <div class="align-items-between"> {/* Use Map function here to loop over senders & display data */ }
-        Sent By (Name here)
-        Amount sent
-        <button type="button">Approve</button>  
-        <button type="button">Cancel</button> 
+
+            <div class="row">
+            <div class="col-sm-6">
+                <div class="card">
+                <div class="card-body">
+                    <h4 class="card-text">Total Received from Donations</h4>
+                </div>
+                </div>
+            </div>
+            
+            <div class="col-sm-4">
+                <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Current Balance </h5>
+                </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Donation from : </h5>
+                    <p class="card-text">Amount Donated : </p>
+                </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Commission Earned on Transaction :   </h5>
+                    <button class="btn btn-success">Approve</button>
+                    <button class="btn btn-dark mt-2">Decline / Cancel</button>
+                </div>
+                </div>
+            </div>
+        </div>
       </div>
-    </div>
+    
   );
 };
 
