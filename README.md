@@ -1,10 +1,6 @@
 ## React Hooks: Payment System with JWT Auth 
 
-For more detail, please visit:
-
-> [React Hooks: JWT Authentication & Authorization example](https://bezkoder.com/react-hooks-jwt-auth/)
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#### Note: This repository is a part of "DO-Nation" project
 
 ### Set port
 .env
