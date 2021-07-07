@@ -22,17 +22,6 @@ const BoardUser = () => {
       }
     );
   }, []);
-  
-/* Reference to Elements in General Design Scheme
-
-      <div class="align-items-between">
-        Channel ID
-        CHannel Name
-        Current Balance
-        Total Received
-        <button type="button">Withdraw</button>
-        
-*/
         
   return (
     <div className="container">
@@ -45,7 +34,7 @@ const BoardUser = () => {
             <div class="col-sm-6">
                 <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Channel ID </h5>
+                    <h5 class="card-title">Channel ID:  </h5>
                     <p class="card-text">Channel Name.</p>
                     <button class="btn btn-link">Share / Copy</button>
                 </div>
