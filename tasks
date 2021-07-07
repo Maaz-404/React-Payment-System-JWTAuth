@@ -1,3 +1,26 @@
 Conclusion: 
     > From current investigation, i have reached a Conclusion that fetch requests on the same host are having a problem while remote requests work properly
     > If all database content comes from backend then i have to add transactions in a controller along with userBoard controller on backend to pass the data to frontend UI..
+
+Tasks: 
+        - Payment Gateways
+            - Stripe    *
+            - Easypaisa
+            - Paypal
+        
+        - Prototype UI Mockups with Dummy data 
+            - UI    *
+            - Data
+        
+        - Transaction controller Implementation
+            - Find user that receives Payment , if user is found then present the stripe payment form & store the userid along with other transaction details for later..
+            - Store Transaction Details to DB after completing transactions
+            - Retrieve Transaction Details from DB
+            - Approve / Decline Controls
+        
+        =======================
+            - Send user data received in profile component into user-board component
+            - Store transaction details on server side after receiving confirmation token(transaction details) from client side
+
+            
+        
