@@ -24,7 +24,11 @@ export default function CheckoutForm() {
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({items: [{ id: "xl-tshirt" }]})
+        body: JSON.stringify({items: [
+            { id: "xl-tshirt" }
+        //pass the username here alongwith the request
+            
+        ]})
       })
       .then(res => {
         return res.json();
@@ -76,6 +80,22 @@ export default function CheckoutForm() {
       setError(null);
       setProcessing(false);
       setSucceeded(true);
+      console.log(payload);
+      
+      
+      fetch("http://localhost:8080/posting-data", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+        //pass the username here alongwith the request
+        
+      })
+      .then(res => {
+        return res.json();
+      })
+
     }
   };
 
