@@ -18,7 +18,7 @@ const Home = () => {
   
   const [channelID, setChannelID] = useState("0");
   
-  const [amount, setAmount] = useState("2.00");
+  const [amount, setAmount] = useState("5");
   
   const [orderID, setOrderID] = useState("");
 
@@ -100,10 +100,10 @@ const Home = () => {
             
         <h4 style={{textDecoration: "underline"}}> Pay with Card </h4>
         <Elements stripe={promise}>
-            <CheckoutForm />
+            <CheckoutForm amount={amount} />
         </Elements>
         
-        <h4 style={{textDecoration: "underline"}}> Pay using Paypal </h4>
+        <h4 style={{textDecoration: "underline"}}> Use Paypal </h4>
 
         <PayPalScriptProvider options={initialOptions}>
         

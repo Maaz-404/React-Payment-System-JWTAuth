@@ -7,7 +7,7 @@ import {
 
 import "./CheckoutForm.css"; 
 
-export default function CheckoutForm() {
+export default function CheckoutForm(props) {
   const [succeeded, setSucceeded] = useState(false);
   const [error, setError] = useState(null);
   const [processing, setProcessing] = useState('');
@@ -24,11 +24,12 @@ export default function CheckoutForm() {
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({items: [
+        body: JSON.stringify({amount:100})
+        /*JSON.stringify({items: [
             { id: "xl-tshirt" }
-        //pass the username here alongwith the request
+        pass the username here alongwith the request
             
-        ]})
+        ]})*/
       })
       .then(res => {
         return res.json();
@@ -36,7 +37,7 @@ export default function CheckoutForm() {
       .then(data => {
         setClientSecret(data.clientSecret);
       });
-  }, []);
+  }, [props.amount]);
 
   const cardStyle = {
     style: {
@@ -89,7 +90,6 @@ export default function CheckoutForm() {
           "Content-Type": "application/json"
         },
         body: JSON.stringify(payload)
-        //pass the username here alongwith the request
         
       })
       .then(res => {
