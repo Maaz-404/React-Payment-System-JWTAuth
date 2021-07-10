@@ -15,6 +15,13 @@ const promise = loadStripe("pk_test_TYooMQauvdEDq54NiTphI7jx");
 const Home = () => {
     
   const [content, setContent] = useState("");
+  
+  const [channelID, setChannelID] = useState("0");
+  
+  const [amount, setAmount] = useState("2.00");
+  
+  const [orderID, setOrderID] = useState("");
+
 
   useEffect(() => {
     UserService.getPublicContent().then(
@@ -37,6 +44,32 @@ const Home = () => {
     currency: "USD",
     intent: "capture",
   };
+  
+  function createOrder(
+        data: Record<string, unknown>,
+        actions: CreateOrderActions
+    ) {
+        return actions.order
+            .create({
+                purchase_units: [
+                    {
+                        amount: {
+                            value: amount,
+                        },
+                    },
+                ],
+            })
+            .then((orderID) => {
+                setOrderID(orderID);
+                return orderID;
+            });
+    }
+    
+    function onChange(event: ChangeEvent<HTMLSelectElement>) {
+        setAmount(event.target.value);
+        setOrderID("");
+    }
+
 
     
   return (
@@ -45,8 +78,21 @@ const Home = () => {
       <header className="jumbotron">
         <h3>{content}</h3>
       </header>
-        <label for="Channel ID">Channel ID: </label>
-        <input type="text">
+        <label for="Channel ID">Channel ID </label>
+        <input type="text" value={channelID} onChange={(event) => setChannelID(event.target.value)} required />
+        <label for="Amount">Amount </label>
+        
+        <select onChange={onChange} name="amount" id="amount">
+                <option value="5.00">$5.00</option>
+                <option value="20.00">$20.00</option>
+                <option value="50.00">$50.00</option>
+                <option value="100.00">$100.00</option>
+                <option value="300.00">$300.00</option>
+                <option value="500.00">$500.00</option>
+            </select>
+            <p>Order ID: {orderID ? orderID : "unknown"}</p>
+            
+            
         <h4 style={{textDecoration: "underline"}}> Pay with Card </h4>
         <Elements stripe={promise}>
             <CheckoutForm />
@@ -58,17 +104,7 @@ const Home = () => {
         
             <PayPalButtons style={{ layout: "horizontal" }}
                             
-                        createOrder={(data, actions) => {
-                                return actions.order.create({
-                                    purchase_units: [
-                                        {
-                                            amount: {
-                                                value: "10.00",
-                                            },
-                                        },
-                                    ],
-                                });
-                        }}
+                        createOrder={createOrder} forceReRender={[amount]}
             />
         
         </PayPalScriptProvider>
