@@ -22,6 +22,7 @@ const Home = () => {
   
   const [orderID, setOrderID] = useState("");
 
+  const [isDisabled, setIsDisabled] = useState(true);
 
   useEffect(() => {
     UserService.getPublicContent().then(
@@ -69,7 +70,11 @@ const Home = () => {
         setAmount(event.target.value);
         setOrderID("");
     }
-
+    
+    function onChannelID(event: ChangeEvent<HTMLInputElement>) {
+        setChannelID(event.target.value)
+        setIsDisabled(!event.target.value);
+    }
 
     
   return (
@@ -79,7 +84,7 @@ const Home = () => {
         <h3>{content}</h3>
       </header>
         <label for="Channel ID">Channel ID </label>
-        <input type="text" value={channelID} onChange={(event) => setChannelID(event.target.value)} required />
+        <input type="text" value={channelID} onChange={onChannelID} required />
         <label for="Amount">Amount </label>
         
         <select onChange={onChange} name="amount" id="amount">
@@ -105,6 +110,8 @@ const Home = () => {
             <PayPalButtons style={{ layout: "horizontal" }}
                             
                         createOrder={createOrder} forceReRender={[amount]}
+                        
+                        disabled={isDisabled}
             />
         
         </PayPalScriptProvider>
