@@ -17,6 +17,7 @@ export default function CheckoutForm(props) {
   const elements = useElements();
 
   useEffect(() => {
+      
     // Create PaymentIntent as soon as the page loads
     window
       .fetch("http://localhost:8080/create-payment-intent", {
@@ -24,12 +25,8 @@ export default function CheckoutForm(props) {
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({amount:100})
-        /*JSON.stringify({items: [
-            { id: "xl-tshirt" }
-        pass the username here alongwith the request
-            
-        ]})*/
+        body: JSON.stringify({amount:parseInt(props.amount)})
+
       })
       .then(res => {
         return res.json();
