@@ -18,14 +18,12 @@ const Home = () => {
   
   const [channelID, setChannelID] = useState("0");
   
-  const [amount, setAmount] = useState(1);
+  const [amount, setAmount] = useState(5);
   
   const [orderID, setOrderID] = useState("");
 
   const [isDisabled, setIsDisabled] = useState(true);
   
-    var amnt = amount;
-
   useEffect(() => {
     UserService.getPublicContent().then(
       (response) => {
@@ -70,7 +68,6 @@ const Home = () => {
     
     function onChange(event: ChangeEvent<HTMLSelectElement>) {
         setAmount(event.target.value);
-        amnt = amount;
         setOrderID("");
     }
     
@@ -86,24 +83,26 @@ const Home = () => {
       <header className="jumbotron">
         <h3>{content}</h3>
       </header>
+        
         <label htmlFor="Channel ID">Channel ID </label>
         <input type="text" value={channelID} onChange={onChannelID} required />
-        <label htmlFor="Amount">Amount </label>
         
+        <label htmlFor="Amount">Amount </label>
         <select onChange={onChange} name="amount" id="amount">
-                <option value="5.00">$5.00</option>
-                <option value="20.00">$20.00</option>
+                <option value="0.00">$0.00</option>
                 <option value="50.00">$50.00</option>
                 <option value="100.00">$100.00</option>
                 <option value="300.00">$300.00</option>
                 <option value="500.00">$500.00</option>
             </select>
+            
+            
             <p>Order ID: {orderID ? orderID : "unknown"}</p>
             
             
         <h4 style={{textDecoration: "underline"}}> Pay with Card </h4>
         <Elements stripe={promise}>
-            <CheckoutForm amount={amnt} />
+            <CheckoutForm channelID={channelID} amount={amount} />
         </Elements>
         
         <h4 style={{textDecoration: "underline"}}> Use Paypal </h4>

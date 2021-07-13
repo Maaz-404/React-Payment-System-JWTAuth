@@ -25,7 +25,12 @@ export default function CheckoutForm(props) {
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({amount:parseInt(props.amount)})
+        body: JSON.stringify({
+            
+            amount:parseInt(props.amount),
+            channelID: props.channelID
+            
+        })
 
       })
       .then(res => {
@@ -34,7 +39,7 @@ export default function CheckoutForm(props) {
       .then(data => {
         setClientSecret(data.clientSecret);
       });
-  }, [props.amount]);
+  }, [props.amount, props.channelID]);
 
   const cardStyle = {
     style: {
@@ -78,20 +83,21 @@ export default function CheckoutForm(props) {
       setError(null);
       setProcessing(false);
       setSucceeded(true);
-      console.log(payload);
+//       console.log(payload);
+//       console.log(props.channelID);
       
-      
-      fetch("http://localhost:8080/posting-data", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(payload)
-        
-      })
-      .then(res => {
-        return res.json();
-      })
+
+//       fetch("http://localhost:8080/posting-data", {
+//         method: "POST",
+//         headers: {
+//           "Content-Type": "application/json"
+//         },
+//         body: JSON.stringify(props.channelID)
+//         
+//       })
+//       .then(res => {
+//         return res.json();
+//       })
 
     }
   };
