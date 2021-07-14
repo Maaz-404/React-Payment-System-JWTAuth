@@ -83,21 +83,25 @@ export default function CheckoutForm(props) {
       setError(null);
       setProcessing(false);
       setSucceeded(true);
-//       console.log(payload);
-//       console.log(props.channelID);
-      
 
-//       fetch("http://localhost:8080/posting-data", {
-//         method: "POST",
-//         headers: {
-//           "Content-Type": "application/json"
-//         },
-//         body: JSON.stringify(props.channelID)
-//         
-//       })
-//       .then(res => {
-//         return res.json();
-//       })
+    //Store response in an object & send transaction details to database
+    const transaction = {
+        description: payload.paymentIntent.description,
+        id: payload.paymentIntent.id,
+        amount: payload.paymentIntent.amount,
+        status: payload.paymentIntent.status
+    };
+
+      fetch("http://localhost:8080/api/transactions/public", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(transaction)
+      })
+      .then(res => {
+        return res.json();
+      })
 
     }
   };
